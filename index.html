@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shankify</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #535353;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #737373;
+        }
+
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-image: linear-gradient(to bottom, #1f1f1f, #121212, black);
+            background-attachment: fixed;
+        }
+
+        .bg-card-gradient {
+            background-image: linear-gradient(to bottom, #532455, #2c142d);
+        }
+
+        .header-gradient {
+            background-image: linear-gradient(to bottom, black 50%, transparent);
+        }
+
+       
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            
+            scrollbar-width: none;
+            
+        }
+
+        
+        .glass-panel {
+            background-color: rgba(18, 18, 18, 0.7);
+            /* From bg-neutral-900 */
+            -webkit-backdrop-filter: blur(12px);
+            backdrop-filter: blur(12px);
+        }
+
+        .glass-footer {
+            background-color: rgba(18, 18, 18, 0.7);
+            -webkit-backdrop-filter: blur(12px);
+            backdrop-filter: blur(12px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+
+<body class="bg-black text-gray-300 h-screen flex flex-col relative">
+
+    <header
+        class="absolute top-0 left-0 right-0 z-10 header-gradient pt-2 pb-6 px-6 flex justify-between items-center w-full">
+        <div class="w-1/4">
+            <img src="img/tc-logo 1.svg" alt="Your Brand Logo" class="w-10 h-10"> 
+        </div>
+        <div class="w-2/4 flex justify-center">
+            <div class="flex items-center bg-[#242424] rounded-full">
+                <button class="bg-black rounded-full w-10 h-10 flex items-center justify-center flex-shrink-0 m-1">
+                    <i class="fa-solid fa-house text-lg text-white"></i>
+                </button>
+                <div class="relative flex-grow mx-2">
+                    <i class="fa-solid fa-search absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-base"></i>
+                    <input type="text" placeholder="What do you want to play?"
+                        class="bg-transparent text-white focus:outline-none placeholder-gray-400 text-sm py-2 pl-10 pr-10"
+                        style="width: 500px;">
+                    <button class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white">
+                        <i class="fa-solid fa-layer-group text-lg"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="w-1/4 flex justify-end items-center space-x-4">
+            <button class="bg-black/70 rounded-full w-8 h-8 flex items-center justify-center hover:bg-neutral-800">
+                <i class="fa-solid fa-bell text-base"></i>
+            </button>
+            <button class="rounded-full w-8 h-8 flex items-center justify-center">
+                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1887&auto=format&fit=crop"
+                    class="rounded-full w-full h-full object-cover">
+            </button>
+        </div>
+    </header>
+
+    <div class="flex-1 flex overflow-hidden p-2 gap-2 pb-24">
+
+       <aside class="w-80 bg-transparent flex-shrink-0 flex flex-col">
+            <div class="glass-panel rounded-lg flex-1 flex flex-col pt-20">
+
+                <div class="p-2">
+                    <div class="flex justify-between items-center px-2 py-3">
+                        <div class="flex items-center gap-3 cursor-pointer text-gray-400 hover:text-white">
+                            <i class="fa-solid fa-book-bookmark text-2xl"></i>
+                            <span class="text-md font-bold">Your Library</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <button
+                                class="text-gray-400 hover:text-white p-2 rounded-full w-8 h-8 flex items-center justify-center hover:bg-neutral-700">
+                                <i class="fa-solid fa-plus text-md"></i>
+                            </button>
+                            <button
+                                class="text-gray-400 hover:text-white p-2 rounded-full w-8 h-8 flex items-center justify-center hover:bg-neutral-700">
+                                <i class="fa-solid fa-arrow-right text-md"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="flex space-x-2 mb-2 px-2">
+                        <button class="bg-neutral-800 text-white text-sm py-1 px-3 rounded-full">Playlists</button>
+                        <button class="bg-neutral-800 text-white text-sm py-1 px-3 rounded-full">Albums</button>
+                    </div>
+                </div>
+                <div class="flex-1 overflow-y-auto px-2">
+                    <div class="space-y-2">
+                        <a href="#"
+                            class="flex items-center space-x-3 p-2 rounded-md hover:bg-neutral-800 transition-colors duration-200">
+                            <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=80&w=2070&auto=format&fit=crop"
+                                alt="Liked Songs" class="w-12 h-12 rounded-md object-cover">
+                            <div>
+                                <p class="font-semibold text-purple-500">Liked Songs</p>
+                                <p class="text-sm">Playlist • 69 songs</p>
+                            </div>
+                        </a>
+                        <a href="#"
+                            class="flex items-center space-x-3 p-2 rounded-md hover:bg-neutral-800 transition-colors duration-200">
+                            <img src="https://phg7ih4ayg.ucarecd.net/3813abe4-2c29-429c-9807-6348ed9deac5/images2.jpeg"
+                                alt="Bollywood" class="w-12 h-12 rounded-md object-cover">
+                            <div>
+                                <p class="font-semibold text-white">Bollywood Central</p>
+                                <p class="text-sm">Playlist • Spotify</p>
+                            </div>
+                        </a>
+                        <a href="#"
+                            class="flex items-center space-x-3 p-2 rounded-md hover:bg-neutral-800 transition-colors duration-200">
+                            <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=2070&auto=format&fit=crop"
+                                alt="Indian Bus" class="w-12 h-12 rounded-md object-cover">
+                            <div>
+                                <p class="font-semibold text-white">Indie Mix</p>
+                                <p class="text-sm">Playlist • Gemtracks</p>
+                            </div>
+                        </a>
+                        <a href="#"
+                            class="flex items-center space-x-3 p-2 rounded-md hover:bg-neutral-800 transition-colors duration-200">
+                            <img src="https://images.unsplash.com/photo-1487180144351-b8472da7d491?q=80&w=2072&auto.format&fit=crop"
+                                alt="Lofi" class="w-12 h-12 rounded-md object-cover">
+                            <div>
+                                <p class="font-semibold text-white">Lofi Study Music</p>
+                                <p class="text-sm">Playlist • Sleep Tales</p>
+                            </div>
+                        </a>
+                        <a href="#"
+                            class="flex items-center space-x-3 p-2 rounded-md hover:bg-neutral-800 transition-colors duration-200">
+                            <img src="https://images.unsplash.com/photo-1506157786151-b8491531f063?q=80&w=2070&auto=format&fit=crop"
+                                alt="Villain" class="w-12 h-12 rounded-md object-cover">
+                            <div>
+                                <p class="font-semibold text-white">Badass Villain Vibes!</p>
+                                <p class="text-sm">Playlist • CloudKid</p>
+                            </div>
+                        </a>
+                        <a href="#"
+                            class="flex items-center space-x-3 p-2 rounded-md hover:bg-neutral-800 transition-colors duration-200">
+                            <img src="https://phg7ih4ayg.ucarecd.net/2f2f4d7f-b08b-4313-905f-3b8b577eb647/hq720.jpg"
+                                alt="Sad" class="w-12 h-12 rounded-md object-cover">
+                            <div>
+                                <p class="font-semibold text-white">90s Sad Bollywood</p>
+                                <p class="text-sm">Playlist • Spotify</p>
+                            </div>
+                        </a>
+                        <a href="#"
+                            class="flex items-center space-x-3 p-2 rounded-md hover:bg-neutral-800 transition-colors duration-200">
+                            <img src="https://phg7ih4ayg.ucarecd.net/e9ef6a76-24e4-485f-996f-80dce150b839/download1.jpeg"
+                                alt="Shashank" class="w-12 h-12 rounded-md object-cover">
+                            <div>
+                                <p class="font-semibold text-white">ShriShti + Shashank</p>
+                                <p class="text-sm">Playlist • Spotify</p>
+                            </div>
+                        </a>
+                        <a href="#"
+                            class="flex items-center space-x-3 p-2 rounded-md hover:bg-neutral-800 transition-colors duration-200">
+                            <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=2070&auto=format&fit=crop"
+                                alt="Filter" class="w-12 h-12 rounded-md object-cover">
+                            <div>
+                                <p class="font-semibold text-white">Filter Shot</p>
+                                <p class="text-sm">Single • Gulzaar Chhaniwala</p>
+                            </div>
+                        </a>
+                        <a href="#"
+                            class="flex items-center space-x-3 p-2 rounded-md hover:bg-neutral-800 transition-colors duration-200">
+                            <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=80&w=2070&auto=format&fit=crop"
+                                alt="Liked Songs" class="w-12 h-12 rounded-md object-cover">
+                            <div>
+                                <p class="font-semibold text-green-500">Liked Songs</p>
+                                <p class="text-sm">Playlist • 69 songs</p>
+                            </div>
+                        </a>
+                        <a href="#"
+                            class="flex items-center space-x-3 p-2 rounded-md hover:bg-neutral-800 transition-colors duration-200">
+                            <img src="https://phg7ih4ayg.ucarecd.net/3813abe4-2c29-429c-9807-6348ed9deac5/images2.jpeg"
+                                alt="Bollywood" class="w-12 h-12 rounded-md object-cover">
+                            <div>
+                                <p class="font-semibold text-white">Bollywood Central</p>
+                                <p class="text-sm">Playlist • Spotify</p>
+                            </div>
+                        </a>
+                        <a href="#"
+                            class="flex items-center space-x-3 p-2 rounded-md hover:bg-neutral-800 transition-colors duration-200">
+                            <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=2070&auto=format&fit=crop"
+                                alt="Indian Bus" class="w-12 h-12 rounded-md object-cover">
+                            <div>
+                                <p class="font-semibold text-white">Indie Mix</p>
+                                <p class="text-sm">Playlist • Gemtracks</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <main class="flex-1 bg-transparent p-6 pt-20 overflow-y-auto rounded-lg">
+            <div class="flex space-x-4 mb-6">
+                <button class="bg-white text-black text-sm py-1 px-3 rounded-full font-semibold">All</button>
+                <button class="bg-neutral-800 text-white text-sm py-1 px-3 rounded-full font-semibold">Music</button>
+                <button class="bg-neutral-800 text-white text-sm py-1 px-3 rounded-full font-semibold">Podcasts</button>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4 mb-8">
+                <div
+                    class="bg-neutral-800 hover:bg-neutral-700 transition-colors rounded-md flex items-center space-x-4">
+                    <img src="https://phg7ih4ayg.ucarecd.net/7c7d0e50-b461-4110-929f-31e5eb509d23/theweekndsafterhoursalbumreview.jpg"
+                        class="w-20 h-20 rounded-l-md object-cover">
+                    <h3 class="font-bold text-white">After Hours</h3>
+                </div>
+                <div
+                    class="bg-card-gradient hover:bg-neutral-700 transition-colors rounded-md flex items-center space-x-4">
+                    <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=80&w=2070&auto=format&fit=crop"
+                        class="w-20 h-20 rounded-l-md object-cover">
+                    <h3 class="font-bold text-white">Liked Songs</h3>
+                </div>
+            </div>
+
+
+            <div class="space-y-10">
+                <div>
+                    <div class="flex justify-between items-end mb-4">
+                        <h2 class="text-2xl font-bold text-white">Episodes you might like</h2>
+                        <a href="#" class="text-sm font-semibold hover:underline text-gray-400">Show all</a>
+                    </div>
+                    <div class="relative group">
+                        <div id="episodes-scroller" class="flex overflow-x-auto space-x-6 pb-4 hide-scrollbar"
+                            style="scroll-behavior: smooth;">
+                            <div
+                                class="p-4 rounded-lg hover:bg-neutral-800 transition-colors duration-300 group/card cursor-pointer w-48 flex-shrink-0">
+                                <div class="relative">
+                                    <img src="https://phg7ih4ayg.ucarecd.net/4099a084-751a-4272-9a33-7e385e9139a4/albumcover0011387.jpg"
+                                        alt="Episode" class="w-full aspect-square object-cover rounded-md mb-4">
+                                    <button
+                                        class="absolute bottom-2 right-2 bg-purple-500 rounded-full p-3 transform opacity-0 group-hover/card:opacity-100 transition-all duration-300 translate-y-2 group-hover/card:translate-y-0 hover:scale-110">
+                                        <svg class="w-6 h-6 text-black" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M8 5v14l11-7z"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <h3 class="font-bold text-white truncate">On Purpose with Jay Shetty</h3>
+                                <p class="text-sm text-gray-400">Podcast</p>
+                            </div>
+                            <div
+                                class="p-4 rounded-lg hover:bg-neutral-800 transition-colors duration-300 group/card cursor-pointer w-48 flex-shrink-0">
+                                <div class="relative">
+                                    <img src="https://phg7ih4ayg.ucarecd.net/74ce6432-a1f8-4cb3-a14a-deeffbb2b47e/milesdaviscornersessions.jpg"
+                                        alt="Episode" class="w-full aspect-square object-cover rounded-md mb-4">
+                                    <button
+                                        class="absolute bottom-2 right-2 bg-purple-500 rounded-full p-3 transform opacity-0 group-hover/card:opacity-100 transition-all duration-300 translate-y-2 group-hover/card:translate-y-0 hover:scale-110">
+                                        <svg class="w-6 h-6 text-black" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M8 5v14l11-7z"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <h3 class="font-bold text-white truncate">The Daily</h3>
+                                <p class="text-sm text-gray-400">The New York Times</p>
+                            </div>
+                            <div
+                                class="p-4 rounded-lg hover:bg-neutral-800 transition-colors duration-300 group/card cursor-pointer w-48 flex-shrink-0">
+                                <div class="relative">
+                                    <img src="https://phg7ih4ayg.ucarecd.net/7f6ea765-4ca6-4b53-8ec9-203412b45b30/43.jpg"
+                                        alt="Episode" class="w-full aspect-square object-cover rounded-md mb-4">
+                                    <button
+                                        class="absolute bottom-2 right-2 bg-purple-500 rounded-full p-3 transform opacity-0 group-hover/card:opacity-100 transition-all duration-300 translate-y-2 group-hover/card:translate-y-0 hover:scale-110">
+                                        <svg class="w-6 h-6 text-black" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M8 5v14l11-7z"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <h3 class="font-bold text-white truncate">Crime Junkie</h3>
+                                <p class="text-sm text-gray-400">audiochuck</p>
+                            </div>
+                            <div
+                                class="p-4 rounded-lg hover:bg-neutral-800 transition-colors duration-300 group/card cursor-pointer w-48 flex-shrink-0">
+                                <div class="relative">
+                                    <img src="https://images.unsplash.com/photo-1534536281715-e28d76689b4d?q=80&w=2070&auto=format&fit=crop"
+                                        alt="Episode" class="w-full aspect-square object-cover rounded-md mb-4">
+                                    <button
+                                        class="absolute bottom-2 right-2 bg-purple-500 rounded-full p-3 transform opacity-0 group-hover/card:opacity-100 transition-all duration-300 translate-y-2 group-hover/card:translate-y-0 hover:scale-110">
+                                        <svg class="w-6 h-6 text-black" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M8 5v14l11-7z"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <h3 class="font-bold text-white truncate">The Joe Rogan Experience</h3>
+                                <p class="text-sm text-gray-400">Joe Rogan</p>
+                            </div>
+                            <div
+                                class="p-4 rounded-lg hover:bg-neutral-800 transition-colors duration-300 group/card cursor-pointer w-48 flex-shrink-0">
+                                <div class="relative">
+                                    <img src="https://phg7ih4ayg.ucarecd.net/3ccd01b2-80f9-41a3-9ffb-fd817c59507a/cdalbumcoverforsocialmedia.jpg"
+                                        alt="Episode" class="w-full aspect-square object-cover rounded-md mb-4">
+                                    <button
+                                        class="absolute bottom-2 right-2 bg-purple-500 rounded-full p-3 transform opacity-0 group-hover/card:opacity-100 transition-all duration-300 translate-y-2 group-hover/card:translate-y-0 hover:scale-110">
+                                        <svg class="w-6 h-6 text-black" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M8 5v14l11-7z"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <h3 class="font-bold text-white truncate">Call Her Daddy</h3>
+                                <p class="text-sm text-gray-400">Alex Cooper</p>
+                            </div>
+                        </div>
+                        <button id="episodes-scroll-left"
+                            class="absolute left-0 top-2/5 -translate-y-1/2 bg-black/70 rounded-full w-10 h-10 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity z-10 hover:bg-black">
+                            <i class="fa-solid fa-chevron-left"></i>
+                        </button>
+                        <button id="episodes-scroll-right"
+                            class="absolute right-0 top-2/5 -translate-y-1/2 bg-black/70 rounded-full w-10 h-10 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity z-10 hover:bg-black">
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="flex justify-between items-end mb-4">
+                        <h2 class="text-2xl font-bold text-white">Made For You</h2>
+                        <a href="#" class="text-sm font-semibold hover:underline text-gray-400">Show all</a>
+                    </div>
+                    <div class="relative group">
+                        <div id="made-for-you-scroller" class="flex overflow-x-auto space-x-6 pb-4 hide-scrollbar"
+                            style="scroll-behavior: smooth;">
+                            <div
+                                class="p-4 rounded-lg hover:bg-neutral-800 transition-colors duration-300 group/card cursor-pointer w-48 flex-shrink-0">
+                                <div class="relative">
+                                    <img src="https://phg7ih4ayg.ucarecd.net/286ab8bc-e8a7-43b5-80ee-1a621c0a8d06/download.jpeg"
+                                        alt="Mix" class="w-full aspect-square object-cover rounded-md mb-4">
+                                    <button
+                                        class="absolute bottom-2 right-2 bg-purple-500 rounded-full p-3 transform opacity-0 group-hover/card:opacity-100 transition-all duration-300 translate-y-2 group-hover/card:translate-y-0 hover:scale-110">
+                                        <svg class="w-6 h-6 text-black" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M8 5v14l11-7z"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <h3 class="font-bold text-white truncate">Daily Mix 1</h3>
+                                <p class="text-sm text-gray-400">The Weeknd, Post Malone</p>
+                            </div>
+                            <div
+                                class="p-4 rounded-lg hover:bg-neutral-800 transition-colors duration-300 group/card cursor-pointer w-48 flex-shrink-0">
+                                <div class="relative">
+                                    <img src="https://phg7ih4ayg.ucarecd.net/0e7704bd-1600-41b1-8dfe-3688e37a4a69/Finalimage.jpg"
+                                        alt="Mix" class="w-full aspect-square object-cover rounded-md mb-4">
+                                    <button
+                                        class="absolute bottom-2 right-2 bg-purple-500 rounded-full p-3 transform opacity-0 group-hover/card:opacity-100 transition-all duration-300 translate-y-2 group-hover/card:translate-y-0 hover:scale-110">
+                                        <svg class="w-6 h-6 text-black" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M8 5v14l11-7z"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <h3 class="font-bold text-white truncate">Daily Mix 2</h3>
+                                <p class="text-sm text-gray-400">Dua Lipa, Glass Animals</p>
+                            </div>
+                            <div
+                                class="p-4 rounded-lg hover:bg-neutral-800 transition-colors duration-300 group/card cursor-pointer w-48 flex-shrink-0">
+                                <div class="relative">
+                                    <img src="https://phg7ih4ayg.ucarecd.net/a94d367e-7e85-4640-bd4f-02d8db16a92c/5cb3d492542b7ef7bc16d2e037893f2e.jpg"
+                                        alt="Mix" class="w-full aspect-square object-cover rounded-md mb-4">
+                                    <button
+                                        class="absolute bottom-2 right-2 bg-purple-500 rounded-full p-3 transform opacity-0 group-hover/card:opacity-100 transition-all duration-300 translate-y-2 group-hover/card:translate-y-0 hover:scale-110">
+                                        <svg class="w-6 h-6 text-black" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M8 5v14l11-7z"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <h3 class="font-bold text-white truncate">Daily Mix 3</h3>
+                                <p class="text-sm text-gray-400">Harry Styles, Taylor Swift</p>
+                            </div>
+                        </div>
+
+                        <button id="made-for-you-scroll-left"
+                            class="absolute left-0 top-2/5 -translate-y-1/2 bg-black/70 rounded-full w-10 h-10 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity z-10 hover:bg-black">
+                            <i class="fa-solid fa-chevron-left"></i>
+                        </button>
+                        <button id="made-for-you-scroll-right"
+                            class="absolute right-0 top-2/5 -translate-y-1/2 bg-black/70 rounded-full w-10 h-10 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity z-10 hover:bg-black">
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+                <div>
+                    <div class="flex justify-between items-end mb-4">
+                        <h2 class="text-2xl font-bold text-white">Recently Played</h2>
+                        <a href="#" class="text-sm font-semibold hover:underline text-gray-400">Show all</a>
+                    </div>
+                    <div class="relative group">
+                        <div id="recently-played-scroller" class="flex overflow-x-auto space-x-6 pb-4 hide-scrollbar"
+                            style="scroll-behavior: smooth;">
+                            <div
+                                class="p-4 rounded-lg hover:bg-neutral-800 transition-colors duration-300 group/card cursor-pointer w-48 flex-shrink-0">
+                                <div class="relative">
+                                    <img src="https://images.unsplash.com/photo-1487180144351-b8472da7d491?q=80&w=2072&auto.format&fit=crop"
+                                        alt="Recently Played" class="w-full aspect-square object-cover rounded-md mb-4">
+                                    <button
+                                        class="absolute bottom-2 right-2 bg-purple-500 rounded-full p-3 transform opacity-0 group-hover/card:opacity-100 transition-all duration-300 translate-y-2 group-hover/card:translate-y-0 hover:scale-110">
+                                        <svg class="w-6 h-6 text-black" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M8 5v14l11-7z"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <h3 class="font-bold text-white truncate">Lo-Fi Beats</h3>
+                                <p class="text-sm text-gray-400">Playlist • Spotify</p>
+                            </div>
+                        </div>
+                        <button id="recently-played-scroll-left"
+                            class="absolute left-0 top-2/5 -translate-y-1/2 bg-black/70 rounded-full w-10 h-10 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity z-10 hover:bg-black">
+                            <i class="fa-solid fa-chevron-left"></i>
+                        </button>
+                        <button id="recently-played-scroll-right"
+                            class="absolute right-0 top-2/5 -translate-y-1/2 bg-black/70 rounded-full w-10 h-10 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity z-10 hover:bg-black">
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <aside class="w-72 bg-transparent flex-shrink-0 flex flex-col">
+            <div class="flex-1 overflow-y-auto space-y-2 pr-2 pt-20">
+
+                <div class="glass-panel rounded-lg p-4">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-lg font-bold text-white">I Like Me Better</h3>
+                        <button class="text-gray-400 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
+                    </div>
+                    <img src="https://phg7ih4ayg.ucarecd.net/ee615889-0d08-497b-a387-35a7af980c51/ILikeMeBetterEnglish201720191202143751500x500.jpg"
+                        alt="Album Art" class="w-full rounded-lg mb-4 object-cover">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <h3 class="text-2xl font-bold text-white">I Like Me Better</h3>
+                            <p class="text-gray-400">Lauv</p>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <button class="text-gray-400 hover:text-white"><i
+                                    class="fa-regular fa-heart text-xl"></i></button>
+                            <button class="text-gray-400 hover:text-white"><i
+                                    class="fa-solid fa-plus text-xl"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-panel rounded-lg p-4">
+                    <h3 class="text-lg font-bold text-white mb-2">About the artist</h3>
+                    <div class="relative group">
+                        <img src="https://phg7ih4ayg.ucarecd.net/bb3e540d-ba87-41ab-9390-4f1cc6632b55/-/preview/264x191/"
+                            class="w-full rounded-lg h-40 object-cover">
+                        <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-end p-4">
+                            <p class="font-bold text-white"></p>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <p class="text-xl font-bold text-white">Lauv</p>
+                                <p class="text-sm text-gray-400">19,420,276 monthly listeners</p>
+                            </div>
+                            <button
+                                class="mt-2 border border-gray-500 text-white font-bold py-1 px-4 rounded-full hover:border-white transition-colors text-sm">Follow</button>
+                        </div>
+                        <p class="text-sm text-gray-400 mt-2">A truly groundbreaking force in today's music world, Lauv
+                            embodies both the immense...</p>
+                    </div>
+                </div>
+
+                <div class="glass-panel rounded-lg p-4">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-lg font-bold text-white">Credits</h3>
+                        <a href="#" class="text-sm font-semibold hover:underline text-gray-400">Show all</a>
+                    </div>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between items-center">
+                                <p class="font-semibold text-white">Lauv</p>
+                                <button
+                                    class="border border-gray-500 text-white text-xs font-bold py-1 px-3 rounded-full hover:border-white">Follow</button>
+                            </div>
+                            <p class="text-sm text-gray-400">Main Artist, Producer</p>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-white">Ari Leff</p>
+                            <p class="text-sm text-gray-400">Composer</p>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-white">Michael Matosic</p>
+                            <p class="text-sm text-gray-400">Composer</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-panel rounded-lg p-4">
+                    <h3 class="text-lg font-bold text-white mb-4">On tour</h3>
+                    <div class="flex items-center space-x-4 p-2 rounded-lg hover:bg-neutral-800 cursor-pointer">
+                        <div class="text-center">
+                            <p class="font-bold text-white">OCT</p>
+                            <p class="text-2xl font-bold text-white">11</p>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-white">San Francisco</p>
+                            <p class="text-sm text-gray-400">Khalid, Lauv</p>
+                            <p class="text-sm text-gray-400">Sat 15:00 • Golden Gate Park</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-panel rounded-lg p-4">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-lg font-bold text-white">Next in queue</h3>
+                        <a href="#" class="text-sm font-semibold hover:underline text-gray-400">Open queue</a>
+                    </div>
+                    <div class="flex items-center space-x-3 p-2 rounded-lg hover:bg-neutral-800 cursor-pointer">
+                        <img src="https://phg7ih4ayg.ucarecd.net/7c7d0e50-b461-4110-929f-31e5eb509d23/-/preview/1000x1000/"
+                            class="w-12 h-12 rounded-md object-cover">
+                        <div>
+                            <p class="font-semibold text-white">After Hours</p>
+                            <p class="text-sm text-gray-400">The Weeknd</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </aside>
+
+    </div>
+
+    <footer class="fixed bottom-0 left-0 right-0 z-20 p-4 flex items-center justify-between glass-footer">
+        <div class="flex items-center space-x-4 w-1/4">
+            <img src="https://phg7ih4ayg.ucarecd.net/ee615889-0d08-497b-a387-35a7af980c51/ILikeMeBetterEnglish201720191202143751500x500.jpg"
+                alt="Now Playing" class="w-14 h-14 rounded-md object-cover">
+            <div>
+                <p class="font-semibold text-white">I Like Me Better</p>
+                <p class="text-sm text-gray-400 hover:underline cursor-pointer">Lauv</p>
+            </div>
+            <button class="text-gray-400 hover:text-white"><i class="fa-regular fa-heart"></i></button>
+        </div>
+
+        <div class="flex flex-col items-center space-y-2 w-1/2">
+            <div class="flex items-center space-x-6">
+                <button class="text-gray-400 hover:text-white"><i class="fa-solid fa-shuffle"></i></button>
+                <button class="text-gray-400 hover:text-white"><i
+                        class="fa-solid fa-backward-step text-xl"></i></button>
+                <button id="play-pause-btn" class="bg-white rounded-full p-2 text-black hover:scale-105">
+                    <svg id="play-icon" class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z"></path>
+                    </svg>
+                    <svg id="pause-icon" class="w-6 h-6 hidden" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"></path>
+                    </svg>
+                </button>
+                <button class="text-gray-400 hover:text-white"><i class="fa-solid fa-forward-step text-xl"></i></button>
+                <button class="text-gray-400 hover:text-white"><i class="fa-solid fa-repeat"></i></button>
+            </div>
+            <div class="flex items-center space-x-2 w-full max-w-xl">
+                <span class="text-xs text-gray-400">0:02</span>
+                <div class="w-full bg-gray-600 rounded-full h-1 group">
+                    <div class="bg-white group-hover:bg-purple-500 h-1 rounded-full" style="width: 10%;"></div>
+                </div>
+                <span class="text-xs text-gray-400">3:17</span>
+            </div>
+        </div>
+
+        <div class="flex items-center space-x-4 w-1/4 justify-end">
+            <button class="text-gray-400 hover:text-white"><i class="fa-solid fa-microphone"></i></button>
+            <button class="text-gray-400 hover:text-white"><i class="fa-solid fa-list"></i></button>
+            <button class="text-gray-400 hover:text-white"><i class="fa-solid fa-computer"></i></button>
+            <div class="flex items-center space-x-2 w-32">
+                <button class="text-gray-400 hover:text-white"><i class="fa-solid fa-volume-high"></i></button>
+                <div class="w-full bg-gray-600 rounded-full h-1 group">
+                    <div class="bg-white group-hover:bg-purple-500 h-1 rounded-full" style="width: 75%;"></div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        
+        const playPauseBtn = document.getElementById('play-pause-btn');
+        const playIcon = document.getElementById('play-icon');
+        const pauseIcon = document.getElementById('pause-icon');
+
+        playPauseBtn.addEventListener('click', () => {
+            playIcon.classList.toggle('hidden');
+            pauseIcon.classList.toggle('hidden');
+        });
+
+        
+        window.addEventListener('load', () => {
+            const setupScroller = (scrollerId, leftBtnId, rightBtnId) => {
+                const scroller = document.getElementById(scrollerId);
+                const leftBtn = document.getElementById(leftBtnId);
+                const rightBtn = document.getElementById(rightBtnId);
+
+                if (!scroller || !leftBtn || !rightBtn) return;
+
+                const scrollAmount = scroller.clientWidth;
+
+                const updateButtons = () => {
+                    if (!scroller) return;
+
+                    const hasOverflow = scroller.scrollWidth > scroller.clientWidth;
+                    if (!hasOverflow) {
+                        leftBtn.classList.add('hidden');
+                        rightBtn.classList.add('hidden');
+                        return;
+                    }
+
+                    const maxScrollLeft = scroller.scrollWidth - scroller.clientWidth;
+
+                    if (scroller.scrollLeft <= 0) {
+                        leftBtn.classList.add('hidden');
+                    } else {
+                        leftBtn.classList.remove('hidden');
+                    }
+
+                    if (scroller.scrollLeft >= maxScrollLeft - 1) { 
+                        rightBtn.classList.add('hidden');
+                    } else {
+                        rightBtn.classList.remove('hidden');
+                    }
+                };
+
+                leftBtn.addEventListener('click', () => {
+                    scroller.scrollLeft -= scrollAmount;
+                });
+
+                rightBtn.addEventListener('click', () => {
+                    scroller.scrollLeft += scrollAmount;
+                });
+
+                
+                const debounce = (func, delay) => {
+                    let timeout;
+                    return function (...args) {
+                        clearTimeout(timeout);
+                        timeout = setTimeout(() => func.apply(this, args), delay);
+                    };
+                };
+
+                const debouncedUpdate = debounce(updateButtons, 100);
+
+                scroller.addEventListener('scroll', debouncedUpdate);
+                new ResizeObserver(debouncedUpdate).observe(scroller);
+
+                
+                updateButtons();
+            };
+
+            setupScroller('episodes-scroller', 'episodes-scroll-left', 'episodes-scroll-right');
+            setupScroller('made-for-you-scroller', 'made-for-you-scroll-left', 'made-for-you-scroll-right');
+            setupScroller('recently-played-scroller', 'recently-played-scroll-left', 'recently-played-scroll-right');
+        });
+
+    </script>
+</body>
+
+</html>
